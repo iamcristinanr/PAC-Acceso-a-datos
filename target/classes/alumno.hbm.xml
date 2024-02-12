@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <!--  MAPEO CLASE ALUMNO - TABLA ALUMNO - BBDD M06 -->
+    	<class name="pac.Alumno"  table="alumnos" catalog="m06"> 
+    	<!--  GENERADOR AUTOINCREMENTAL ID -->
+    		<id name="id">
+    			<column name="idAlumno"/>
+    			<generator class="increment"/>
+    		</id>
+    		<!--  MAPEO PROPIEDADES CLASE ALUMNO -->
+    		<property name="nombre" type="string"></property>
+    		<property name="nacionalidad" type="string"></property>
+    		<property name="edad" type="integer"></property>
+    		<property name="sexo" type="string"></property>
+
+    		
+    		 <!-- MAPEO RELACION MUCHOS A MUCHOS - TABLA ALUMNOS-MODULOS FUENTE: PLATZI-->
+    		 
+    		<set name="modulos" table="alumno_modulo">
+	            <key>
+	                <column name="idAlumno"/>
+	            </key>
+	            <many-to-many class="pac.Modulo">
+	                <column name="idModulo"/>
+	            </many-to-many>
+    		</set>
+    	</class>
+    </hibernate-mapping>
